@@ -19,3 +19,7 @@
 	status = "okay";
 	max-frequency = <52000000>;
 };
+&gpu {
+	mali-supply = <&vdd_gpu>;
+	status = "okay";
+};
