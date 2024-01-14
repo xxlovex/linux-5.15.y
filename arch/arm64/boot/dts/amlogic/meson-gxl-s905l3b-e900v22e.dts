@@ -8,6 +8,7 @@
 /dts-v1/;
 
 #include "meson-gxl-s905l2-x7-5g.dts"
+include "meson-gx-mali450.dtsi"
 
 / {
 	compatible = "amlogic,s905l3b", "amlogic,meson-gxl";
@@ -18,8 +19,4 @@
 &sd_emmc_c {
 	status = "okay";
 	max-frequency = <52000000>;
-};
-&gpu {
-	mali-supply = <&vdd_gpu>;
-	status = "okay";
 };
