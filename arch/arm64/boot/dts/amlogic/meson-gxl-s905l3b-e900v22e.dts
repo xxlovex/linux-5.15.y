@@ -13,6 +13,16 @@
 / {
 	compatible = "amlogic,s905l3b", "amlogic,meson-gxl";
 	model = "Skyworth E900V22E";
+
+	vddgpu: regulator-vddgpu {
+		compatible = "regulator-fixed";
+		regulator-name = "mali";
+		regulator-min-microvolt = <800000>;
+		regulator-max-microvolt = <800000>;
+		vin-supply = <&main_12v>;
+		regulator-boot-on;
+		regulator-always-on;
+	};
 };
 
 /* eMMC */
