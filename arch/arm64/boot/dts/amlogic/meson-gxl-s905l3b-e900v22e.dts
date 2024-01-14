@@ -44,6 +44,8 @@
 			opp-hz = /bits/ 64 <744000000>;
 			opp-microvolt = <950000>;
 		};
+		mali-supply = <&vdd_gpu>;
+		status = "okay";
 	};
 };
 
@@ -71,6 +73,4 @@
 			"pp2", "ppmmu2";
 		operating-points-v2 = <&gpu_opp_table>;
 	};
-	mali-supply = <&vdd_gpu>;
-	status = "okay";
 };
