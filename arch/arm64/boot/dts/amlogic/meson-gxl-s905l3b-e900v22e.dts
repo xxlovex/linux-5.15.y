@@ -12,13 +12,7 @@
 / {
 	compatible = "amlogic,s905l3b", "amlogic,meson-gxl";
 	model = "Skyworth E900V22E";
-};
 
-/* eMMC */
-&sd_emmc_c {
-	status = "okay";
-	max-frequency = <52000000>;
-	
 	gpu_opp_table: opp-table {
 		compatible = "operating-points-v2";
 
@@ -52,10 +46,14 @@
 		};
 	};
 };
+
+/* eMMC */
+&sd_emmc_c {
+	status = "okay";
+	max-frequency = <52000000>;
+};
 &apb {
 	mali: gpu@c0000 {
-		mali-supply = <&vdd_gpu>;
-		status = "okay";
 		compatible = "arm,mali-450";
 		reg = <0x0 0xc0000 0x0 0x40000>;
 		interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
@@ -73,4 +71,6 @@
 			"pp2", "ppmmu2";
 		operating-points-v2 = <&gpu_opp_table>;
 	};
+	mali-supply = <&vdd_gpu>;
+	status = "okay";
 };
