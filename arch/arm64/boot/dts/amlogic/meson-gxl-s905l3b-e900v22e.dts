@@ -8,45 +8,14 @@
 /dts-v1/;
 
 #include "meson-gxl-s905l2-x7-5g.dts"
-#include "meson-gx-mali450.dtsi"
 
 / {
 	compatible = "amlogic,s905l3b", "amlogic,meson-gxl";
 	model = "Skyworth E900V22E";
-
-	main_12v: regulator-main_12v {
-		compatible = "regulator-fixed";
-		regulator-name = "12V";
-		regulator-min-microvolt = <12000000>;
-		regulator-max-microvolt = <12000000>;
-		regulator-always-on;
-	};
-
-	vddgpu: regulator-vddgpu {
-		compatible = "regulator-fixed";
-		regulator-name = "mali";
-		regulator-min-microvolt = <800000>;
-		regulator-max-microvolt = <800000>;
-		vin-supply = <&main_12v>;
-		regulator-boot-on;
-		regulator-always-on;
-	};
 };
 
 /* eMMC */
 &sd_emmc_c {
 	status = "okay";
 	max-frequency = <52000000>;
-};
-&mali {
-	compatible = "amlogic,meson-gxl-mali", "arm,mali-450";
-
-	clocks = <&clkc CLKID_CLK81>, <&clkc CLKID_MALI>;
-	clock-names = "bus", "core";
-
-	assigned-clocks = <&clkc CLKID_GP0_PLL>;
-	assigned-clock-rates = <744000000>;
-
-	mali-supply = <&vddgpu>;
-	status = "okay";
 };
